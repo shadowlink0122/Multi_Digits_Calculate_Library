@@ -9,16 +9,18 @@
 //  This Library can calculate for 800,000 digits Addition and Substraction.  //
 //============================================================================//
 //
-// 完成したらクラスに移植する。
-// 関数についている multi は名前空間にする。
-// numberの配列は固定ではなくて、メモリの動的確保にする。
+// If i complete this library, I must Rewrite with class.
+// About the beginning of the function "this" makes it namespace.
+// Use Vector to allocate an array.
 //
 
 #ifndef MULTI_DIGIT_CALCULATION
 #define MULTI_DIGIT_CALCULATION
 
-//足し算と引き算ができる
-//掛け算と割り算の実装がまだできていない
+// This library can multi-gidits addition and mubtraction.
+// Implementation of multiplication and division is not completed yet
+
+
 #include <iostream>
 #include <cmath>
 using namespace std;
@@ -30,6 +32,7 @@ using namespace std;
 typedef struct{
   bool sign;
   int digit;
+  // Next, use Pointer( Vector )
   int number[MAX_DIGITS];
 }multinum;
 
@@ -41,13 +44,13 @@ void change_sign(multinum *num,bool change);
 void restore_sign(multinum *num,bool change);
 void multicheck(multinum *num);
 
-//多桁数のポインタを返す
+//Multidigits Number's Pointer type
 multinum* multiclear(multinum *num);
-multinum* multiinput(multinum *num);//未実装
+multinum* multiinput(multinum *num);      // Don't yet
 multinum* multiaddition(multinum *num1,multinum *num2,bool pass);
 multinum* multisubtraction(multinum *num1,multinum *num2,bool pass);
-multinum* multiplication(multinum *num1,multinum *num2);     //未実装のため内部リンケージ
-multinum* multidivision(multinum *num1,multinum *num2);      //未実装のため内部リンケージ
+multinum* multiplication(multinum *num1,multinum *num2);    // Don't yet
+multinum* multidivision(multinum *num1,multinum *num2);     // Don't yet
 
 void multiswap(multinum *num1,multinum *num2){
   multinum *index = (multinum*)malloc(sizeof(multinum));
@@ -121,7 +124,7 @@ multinum* multiclear(multinum *num = NULL){
   return multi;
 }
 
-// String型からint型への変換
+// Convert String to Integer
 multinum* multiconvert(string strnum){
   multinum *num = multiclear();
   if(num == NULL)return NULL;
@@ -332,6 +335,7 @@ multinum* multisubtraction(multinum *num1,multinum *num2,bool pass = false){
 */
 
 multinum* multiplication(multinum *num1,multinum *num2){
+  // Create new Object
   multinum *ans = multiclear();
   multinum *relay = multiclear();
   bool swaped = false;
